@@ -24,16 +24,17 @@ module.exports = {
 					catch(e) {
 						return message.channel.send('An error occured, please try again!');
 					}
-					
+
 					const embed = new MessageEmbed()
 						.setDescription(`[\`📄 View\`](https://hasteb.in/${response.key}.js)`)
-						.setColor('GREEN')
-					message.reply(`the transcript is complete. Please click the link below to view the transcript`, embed)
+						.setColor('GREEN');
+					message.reply('the transcript is complete. Please click the link below to view the transcript', embed);
 				});
 			}
-		} else {
+		}
+		else {
 			return message.reply(
-				"you cannot use this command here. Please use this command in a open ticket."
+				'you cannot use this command here. Please use this command in a open ticket.',
 			);
 		}
 	},

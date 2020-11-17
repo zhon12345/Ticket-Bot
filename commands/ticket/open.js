@@ -1,7 +1,4 @@
-const fetch = require('node-fetch');
-const url = 'https://hasteb.in/documents';
-const { MessageEmbed } = require('discord.js');
-
+/* eslint-disable no-unused-vars */
 module.exports = {
 	name: 'open',
 	category: 'Ticket',
@@ -15,20 +12,22 @@ module.exports = {
 			const member = message.guild.members.cache.get(message.channel.name.split('ticket-').join(''));
 			try {
 				message.channel.updateOverwrite(member.user, {
-						VIEW_CHANNEL: true,
-						SEND_MESSAGES: true,
-						ATTACH_FILES: true,
-						READ_MESSAGE_HISTORY: true,
-					})
+					VIEW_CHANNEL: true,
+					SEND_MESSAGES: true,
+					ATTACH_FILES: true,
+					READ_MESSAGE_HISTORY: true,
+				})
 					.then(() => {
 						message.channel.send(`Successfully re-opened ${message.channel}`);
 					});
-			} catch (e) {
+			}
+			catch (e) {
 				return message.channel.send('An error occured, please try again!');
 			}
-		} else {
+		}
+		else {
 			return message.reply(
-				"you cannot use this command here. Please use this command on a closed ticket."
+				'you cannot use this command here. Please use this command on a closed ticket.',
 			);
 		}
 	},
