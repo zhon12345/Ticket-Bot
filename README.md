@@ -1,3 +1,4 @@
+# 🎫 Ticket Bot
 ## 📝 Table of Contents 
 
 + [About](https://github.com/zhon12345/Ticket-Bot#-about)
