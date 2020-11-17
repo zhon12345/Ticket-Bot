@@ -7,7 +7,7 @@ module.exports = {
 	category: "Ticket",
 	description: "Delete a specified ticket.",
 	aliases: [],
-	usage: "close",
+	usage: "delete",
 	userperms: ['ADMINISTRATOR'],
 	botperms: [],
 	run: async (client, message, args) => {
