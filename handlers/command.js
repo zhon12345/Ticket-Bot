@@ -1,8 +1,8 @@
-const { readdirSync } = require("fs");
+const { readdirSync } = require('fs');
 
 module.exports = (client) => {
-	readdirSync("./commands/").forEach(dir => {
-		const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
+	readdirSync('./commands/').forEach(dir => {
+		const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith('.js'));
 
 		commands.forEach((file) => {
 			const pull = require(`../commands/${dir}/${file}`);
@@ -13,6 +13,6 @@ module.exports = (client) => {
 			});
 		});
 	});
-	console.log("Loading commands...");
+	console.log('Loading commands...');
 	console.log(`Successfully loaded ${client.commands.size} commands!`);
 };

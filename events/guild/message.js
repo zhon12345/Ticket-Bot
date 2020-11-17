@@ -1,10 +1,10 @@
-const { validatePermissions } = require("../../functions");
+const { validatePermissions } = require('../../functions');
 const { BOT_PREFIX, BOT_OWNER } = process.env;
 
-module.exports = async (client, message, settings) => {
+module.exports = async (client, message) => {
 	if (message.author.bot) return;
 	if (!message.guild) return;
-	
+
 	const prefix = BOT_PREFIX;
 
 	if (message.content.match(`^<@!?${client.user.id}>( |)$`)) {
@@ -23,13 +23,13 @@ module.exports = async (client, message, settings) => {
 
 	if (command) {
 		if (command.userperms.length > 0 || command.botperms.length > 0) {
-			if (typeof command.userperms === "string") {
+			if (typeof command.userperms === 'string') {
 				command.userperms = command.userperms.split();
 				validatePermissions(command.userperms);
 			}
 
 			for(const permission of command.userperms) {
-				if(permission === "BOT_OWNER" && message.member.id !== BOT_OWNER) {
+				if(permission === 'BOT_OWNER' && message.member.id !== BOT_OWNER) {
 					return;
 				}
 				else if(!message.member.hasPermission(permission)) {
@@ -39,7 +39,7 @@ module.exports = async (client, message, settings) => {
 				}
 			}
 
-			if(typeof command.botperms === "string") {
+			if(typeof command.botperms === 'string') {
 				command.botperms = command.botperms.split();
 				validatePermissions(command.botperms);
 			}
