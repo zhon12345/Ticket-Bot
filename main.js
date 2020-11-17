@@ -1,6 +1,6 @@
 require('dotenv').config();
 const keepAlive = require("./server");
-const { Client, Collection, MessageEmbed, Intents } = require('discord.js');
+const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ disableMentions: 'everyone', partials: ['MESSAGE', 'CHANNEL', 'REACTION'], ws: { intents: Intents.ALL } });
 
 client.commands = new Collection();
