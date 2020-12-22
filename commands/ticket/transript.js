@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const url = 'https://hasteb.in/documents';
+const url = 'https://hastebin.com/documents';
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -22,11 +22,12 @@ module.exports = {
 						response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
 					}
 					catch(e) {
-						return message.channel.send('An error occured, please try again!');
+						return message.channel.send('An error occurred, please try again!');
 					}
 
+					const { key } = await response.json();
 					const embed = new MessageEmbed()
-						.setDescription(`[\`📄 View\`](https://hasteb.in/${response.key}.js)`)
+						.setDescription(`[\`📄 View\`](https://hastebin.com/${key}.js)`)
 						.setColor('GREEN');
 					message.reply('the transcript is complete. Please click the link below to view the transcript', embed);
 				});
