@@ -12,7 +12,7 @@ module.exports = {
 	userperms: ['BOT_OWNER'],
 	botperms: ['USE_EXTERNAL_EMOJIS'],
 	run: async (client, message, args) => {
-		const url = 'https://hasteb.in/documents';
+		const url = 'https://hastebin.com/documents';
 		const embed = new MessageEmbed()
 			.addField('Input', '```js\n' + args.join(' ') + '```');
 
@@ -42,9 +42,11 @@ module.exports = {
 					response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
 				}
 				catch (e) {
-					return message.channel.send('<:vError:725270799124004934> An error occured, please try again!');
+					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');
 				}
-				embed.addField('Output', `https://hasteb.in/${response.key}.js`).setColor('GREEN');
+
+				const { key } = await response.json();
+				embed.addField('Output', `https://hastebin.com/${key}.js`).setColor('GREEN');
 			}
 			else {
 				embed.addField('Output', `\`\`\`js\n${output}\`\`\``).setColor('GREEN');
@@ -62,9 +64,11 @@ module.exports = {
 					response = await fetch(url, { method: 'POST', body: err, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
 				}
 				catch (e) {
-					return message.channel.send('<:vError:725270799124004934> An error occured, please try again!');
+					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');
 				}
-				embed.addField('Output', `https://hasteb.in/${response.key}.js`).setColor('RED');
+
+				const { key } = await response.json();
+				embed.addField('Output', `https://hastebin.com/${key}.js`).setColor('RED');
 			}
 			else {
 				embed.addField('Output', `\`\`\`js\n${err}\`\`\``).setColor('RED');

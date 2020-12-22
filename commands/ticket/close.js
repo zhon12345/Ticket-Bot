@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 const fetch = require('node-fetch');
-const url = 'https://hasteb.in/documents';
+const url = 'https://hastebin.com/documents';
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -24,11 +24,12 @@ module.exports = {
 					}
 					catch(e) {
 						console.log(e);
-						return message.channel.send('An error occured, please try again!');
+						return message.channel.send('An error occurred, please try again!');
 					}
 
+					const { key } = await response.json();
 					const embed = new MessageEmbed()
-						.setDescription(`[\`📄 View\`](https://hasteb.in/${response.key}.js)`)
+						.setDescription(`[\`📄 View\`](https://hastebin.com/${key}.js)`)
 						.setColor('GREEN');
 					member.send('Here is a transcript of your ticket, please click the link below to vew the transcript', embed);
 				}).then(() => {
@@ -43,7 +44,7 @@ module.exports = {
 						});
 					}
 					catch(e) {
-						return message.channel.send('An error occured, please try again!');
+						return message.channel.send('An error occurred, please try again!');
 					}
 				});
 			}

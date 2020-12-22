@@ -22,7 +22,7 @@ module.exports = {
 					});
 			}
 			catch (e) {
-				return message.channel.send('An error occured, please try again!');
+				return message.channel.send('An error occurred, please try again!');
 			}
 		}
 		else {

@@ -18,7 +18,7 @@ module.exports = {
 		}
 		catch (e) {
 			return message.channel.send(
-				'<:vError:725270799124004934> An error occured, please try again!',
+				'<:vError:725270799124004934> An error occurred, please try again!',
 			);
 		}
 	},
