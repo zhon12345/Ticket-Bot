@@ -39,7 +39,7 @@ module.exports = {
 			if (output.length >= 1024) {
 				let response;
 				try {
-					response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
+					response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } });
 				}
 				catch (e) {
 					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');
@@ -61,7 +61,7 @@ module.exports = {
 			if (err.length >= 1024) {
 				let response;
 				try {
-					response = await fetch(url, { method: 'POST', body: err, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
+					response = await fetch(url, { method: 'POST', body: err, headers: { 'Content-Type': 'text/plain' } });
 				}
 				catch (e) {
 					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');

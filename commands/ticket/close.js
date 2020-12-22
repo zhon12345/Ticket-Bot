@@ -20,7 +20,7 @@ module.exports = {
 
 					let response;
 					try {
-						response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } }).then(res => res.json());
+						response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } });
 					}
 					catch(e) {
 						console.log(e);
