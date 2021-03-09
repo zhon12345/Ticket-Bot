@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const fetch = require('node-fetch');
+const sourcebin = require('sourcebin_js');
 const { MessageEmbed } = require('discord.js');
 const { clean } = require('../../functions');
 
@@ -12,7 +12,6 @@ module.exports = {
 	userperms: ['BOT_OWNER'],
 	botperms: ['USE_EXTERNAL_EMOJIS'],
 	run: async (client, message, args) => {
-		const url = 'https://hastebin.com/documents';
 		const embed = new MessageEmbed()
 			.addField('Input', '```js\n' + args.join(' ') + '```');
 
@@ -39,14 +38,22 @@ module.exports = {
 			if (output.length >= 1024) {
 				let response;
 				try {
-					response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } });
+					response = await sourcebin.create([
+						{
+							name: ' ',
+							content: output,
+							languageId: 'text',
+						},
+					], {
+						title: 'Eval results',
+						description: ' ',
+					});
 				}
-				catch (e) {
-					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');
+				catch(e) {
+					return message.channel.send('An error occurred, please try again!');
 				}
 
-				const { key } = await response.json();
-				embed.addField('Output', `https://hastebin.com/${key}.js`).setColor('GREEN');
+				embed.addField('Output', `${response.url}`).setColor('GREEN');
 			}
 			else {
 				embed.addField('Output', `\`\`\`js\n${output}\`\`\``).setColor('GREEN');
@@ -61,14 +68,22 @@ module.exports = {
 			if (err.length >= 1024) {
 				let response;
 				try {
-					response = await fetch(url, { method: 'POST', body: err, headers: { 'Content-Type': 'text/plain' } });
+					response = await sourcebin.create([
+						{
+							name: ' ',
+							content: err,
+							languageId: 'text',
+						},
+					], {
+						title: 'Eval results',
+						description: ' ',
+					});
 				}
-				catch (e) {
-					return message.channel.send('<:vError:725270799124004934> An error occurred, please try again!');
+				catch(e) {
+					return message.channel.send('An error occurred, please try again!');
 				}
 
-				const { key } = await response.json();
-				embed.addField('Output', `https://hastebin.com/${key}.js`).setColor('RED');
+				embed.addField('Output', `${response.url}`).setColor('RED');
 			}
 			else {
 				embed.addField('Output', `\`\`\`js\n${err}\`\`\``).setColor('RED');
