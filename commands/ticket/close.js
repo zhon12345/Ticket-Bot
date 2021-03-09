@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-const fetch = require('node-fetch');
-const url = 'https://hastebin.com/documents';
+const sourcebin = require('sourcebin_js');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -20,16 +19,23 @@ module.exports = {
 
 					let response;
 					try {
-						response = await fetch(url, { method: 'POST', body: output, headers: { 'Content-Type': 'text/plain' } });
+						response = await sourcebin.create([
+							{
+								name: ' ',
+								content: output,
+								languageId: 'text',
+							},
+						], {
+							title: `Chat transcript for ${message.channel.name}`,
+							description: ' ',
+						});
 					}
 					catch(e) {
-						console.log(e);
 						return message.channel.send('An error occurred, please try again!');
 					}
 
-					const { key } = await response.json();
 					const embed = new MessageEmbed()
-						.setDescription(`[\`📄 View\`](https://hastebin.com/${key}.js)`)
+						.setDescription(`[\`📄 View\`](${response.url})`)
 						.setColor('GREEN');
 					member.send('Here is a transcript of your ticket, please click the link below to vew the transcript', embed);
 				}).then(() => {
