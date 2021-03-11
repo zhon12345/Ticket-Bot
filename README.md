@@ -40,7 +40,7 @@ remove | Removes a member to a specified ticket.
 transcript | Trascripts a specified ticket.
 
 ## 🙋‍♂️ Contributing
-If you would like t contribute, please fork this repository and submit a pull request! You can also join the [Discord server](https://discord.gg/jMpw3jw) or contact me directly on discord at `zhon12345#8585`. Anyone is welcome to suggest new features and improve code quality!
+If you would like to contribute, please fork this repository and submit a pull request! You can also join the [Discord server](https://discord.gg/jMpw3jw) or contact me directly on discord at `zhon12345#8585`. Anyone is welcome to suggest new features and improve code quality!
 
 ## 📄 License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/zhon12345/Tavern_Keeper/blob/master/LICENSE) file for details.
