@@ -7,7 +7,7 @@
 + [License](https://github.com/zhon12345/Ticket-Bot#-license)
 
 ## ❔ About
-This is a simple ticket bot created by `zhon12345` under 24 hours. It is coded in [Goorm IDE](https://ide.goorm.io/) using [Node.js](https://nodejs.org/en/) and [Discord.js](https://discord.js.org). The code is not thoroughly checked for errors so if you do find errors please report them by [submitting a issue](https://github.com/zhon12345/Ticket-Bot/issues/new).
+This is a simple ticket bot created by `zhon12345` under 24 hours. It is coded using [Node.js](https://nodejs.org/en/) and [Discord.js](https://discord.js.org). The code is not thoroughly checked for errors so if you do find errors please report them by [submitting a issue](https://github.com/zhon12345/Ticket-Bot/issues/new).
 
 ## 💬 Commands
 + Info
