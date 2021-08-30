@@ -37,7 +37,7 @@ module.exports = {
 					const embed = new MessageEmbed()
 						.setDescription(`[\`📄 View\`](${response.url})`)
 						.setColor('GREEN');
-					member.send('Here is a transcript of your ticket, please click the link below to vew the transcript', embed);
+					member.send('Here is a transcript of your ticket, please click the link below to view the transcript', embed);
 				}).then(() => {
 					try {
 						message.channel.updateOverwrite(member.user, {
