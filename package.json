@@ -15,7 +15,7 @@
         "discord.js": "^12.5.3",
         "dotenv": "^8.6.0",
         "express": "^4.17.3",
-        "moment": "^2.29.1",
+        "moment": "^2.29.2",
         "os": "^0.1.2",
         "sourcebin_js": "0.0.3-ignore"
     }
