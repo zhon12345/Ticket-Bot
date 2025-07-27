@@ -7,7 +7,7 @@ module.exports = async (client) => {
 		`${client.guilds.cache.size} Servers`,
 	];
 
-	setInterval(function () {
+	setInterval(() => {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
 		client.user.setActivity(`${BOT_PREFIX}help | ${status}`, { type: "PLAYING" });
 	}, 30000);

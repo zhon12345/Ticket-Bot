@@ -11,7 +11,7 @@ module.exports = {
 	userperms: ["BOT_OWNER"],
 	botperms: ["USE_EXTERNAL_EMOJIS"],
 	run: async (client, message, args) => {
-		const embed = new MessageEmbed().addField("Input", "```js\n" + args.join(" ") + "```");
+		const embed = new MessageEmbed().addField("Input", `\`\`\`js\n${args.join(" ")}\`\`\``);
 
 		const code = args.join(" ");
 		if (!code) {

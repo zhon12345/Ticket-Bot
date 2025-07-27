@@ -1,31 +1,31 @@
 module.exports = {
 	// help.js
-	capitalizeFirstLetter: function (string) {
+	capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	},
 
 	// botinfo.js
-	formatBytes: function (a, b) {
+	formatBytes(a, b) {
 		if (a == 0) return "0 Bytes";
 		const c = 1024,
 			d = b || 2,
 			e = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
 			f = Math.floor(Math.log(a) / Math.log(c));
 
-		return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f];
+		return `${parseFloat((a / c ** f).toFixed(d))} ${e[f]}`;
 	},
 
 	// eval,js
-	clean: function (string) {
+	clean(string) {
 		if (typeof text === "string") {
-			return string.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+			return string.replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`);
 		} else {
 			return string;
 		}
 	},
 
 	// uptime.js & botinfo.js
-	parseDur: function (ms) {
+	parseDur(ms) {
 		let seconds = ms / 1000;
 
 		const days = parseInt(seconds / 86400);
@@ -48,7 +48,7 @@ module.exports = {
 	},
 
 	// message.js
-	validatePermissions: function (permissions) {
+	validatePermissions(permissions) {
 		const validPermissions = [
 			"CREATE_INSTANT_INVITE",
 			"KICK_MEMBERS",
