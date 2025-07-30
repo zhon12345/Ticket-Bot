@@ -4,11 +4,11 @@
 	"description": "A simple ticket bot",
 	"main": "main.js",
 	"scripts": {
-		"format": "prettier --write .",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
-		"dev": "node --watch --env-file .env main.js",
-		"start": "node main.js"
+		"format": "prettier --write src",
+		"lint": "eslint src",
+		"lint:fix": "eslint src --fix",
+		"dev": "node --watch --env-file .env src/main.js",
+		"start": "node src/main.js"
 	},
 	"author": "zhon12345",
 	"license": "ISC",
