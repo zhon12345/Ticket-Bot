@@ -13,7 +13,7 @@
 	"author": "zhon12345",
 	"license": "ISC",
 	"dependencies": {
-		"discord.js": "^12.5.3",
+		"discord.js": "^14.25.1",
 		"express": "^4.21.2",
 		"moment": "^2.30.1",
 		"sourcebin_js": "0.0.3-ignore"

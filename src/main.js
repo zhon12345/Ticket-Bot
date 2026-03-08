@@ -1,9 +1,7 @@
 const keepAlive = require("./server");
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const client = new Client({
-	disableMentions: "everyone",
-	partials: ["MESSAGE", "CHANNEL", "REACTION"],
-	ws: { intents: Intents.ALL },
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 });
 
 client.commands = new Collection();
