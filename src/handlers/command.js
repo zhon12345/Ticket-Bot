@@ -1,18 +1,23 @@
-const { readdirSync } = require("node:fs");
+const path = require("node:path");
+const { loadModules } = require("../utils/loaders");
 
-module.exports = (client) => {
-	readdirSync("./commands/").forEach((dir) => {
-		const commands = readdirSync(`./commands/${dir}/`).filter((file) => file.endsWith(".js"));
-
-		commands.forEach((file) => {
-			const pull = require(`../commands/${dir}/${file}`);
-			client.commands.set(pull.name, pull);
-
-			pull.aliases.forEach((alias) => {
-				client.aliases.set(alias, pull.name);
-			});
-		});
-	});
+module.exports = async (client) => {
 	console.log("Loading commands...");
+
+	const commandFolders = path.join(__dirname, "..", "commands");
+	const commands = await loadModules(commandFolders, {
+		validate: (module, filePath) => {
+			const valid = "data" in module && "run" in module;
+			if (!valid) {
+				console.warn(`[WARNING] The command at ${filePath} is missing a required "data" or "run" property.`);
+			}
+			return valid;
+		},
+	});
+
+	for (const command of commands) {
+		client.commands.set(command.data.name, command);
+	}
+
 	console.log(`Successfully loaded ${client.commands.size} commands!`);
 };

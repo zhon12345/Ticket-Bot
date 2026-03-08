@@ -1,13 +1,19 @@
-const { readdirSync } = require("node:fs");
+const path = require("node:path");
+const { loadModules } = require("../utils/loaders");
 
-module.exports = (client) => {
-	const load = (dirs) => {
-		const events = readdirSync(`./events/${dirs}/`).filter((d) => d.endsWith("js"));
-		for (const file of events) {
-			const evt = require(`../events/${dirs}/${file}`);
-			const eName = file.split(".")[0];
-			client.on(eName, evt.bind(null, client));
-		}
-	};
-	["client", "guild"].forEach((x) => load(x));
+module.exports = async (client) => {
+	const eventFolder = path.join(__dirname, "..", "events");
+	const events = await loadModules(eventFolder, {
+		validate: (module, filePath) => {
+			const valid = "name" in module && "run" in module;
+			if (!valid) {
+				console.warn(`[WARNING] The event at ${filePath} is missing a required "name" or "run" property.`);
+			}
+			return valid;
+		},
+	});
+
+	for (const event of events) {
+		client[event.once ? "once" : "on"](event.name, (...args) => event.run(...args));
+	}
 };
