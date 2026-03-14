@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	name: "transcript",
 	category: "Ticket",
-	description: "Trascripts a specified ticket.",
+	description: "Transcripts a specified ticket.",
 	aliases: [],
 	usage: "transcript",
 	userperms: [],
