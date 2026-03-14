@@ -37,13 +37,13 @@ This project is a 24 hours challenge to make a simple Discord ticket bot using [
 
 ## ⚙️ Environment Variables
 
-To run this project, rename `example.env` to `.env` and fill out the following values:
+To run this project, rename `.env.example` to `.env` and fill out the following values:
 
-```
-BOT_TOKEN = your_bot_token
-BOT_PREFIX = t!
-BOT_OWNER = your_discord_id
-```
+| Variable     | Description                                  |
+| ------------ | -------------------------------------------- |
+| `BOT_TOKEN`  | Your Discord bot token.                      |
+| `BOT_PREFIX` | Command prefix used to trigger bot commands. |
+| `BOT_OWNER`  | Discord user ID of the bot owner.            |
 
 ## 🚀 Run Locally
 
